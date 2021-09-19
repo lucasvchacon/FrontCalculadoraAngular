@@ -1,0 +1,18 @@
+{
+  "transferencias": [
+    {
+      "ano": 2000,
+      "dias": 366,
+      "diasAverbado": 500,
+      "diasLicencaPremio": 400,
+      "estado": "leitura",
+      "id": 1
+    },
+    {
+      "ano": 2005,
+      "dias": 360,
+      "estado": "leitura",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+<section class="container">
+
+  <!-- Tabela de Frequência -->
+  <h2 class="titulo">Frequências</h2>
+
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+      <th class="tabela__cabecalho__conteudo">Ano</th>
+      <th class="tabela__cabecalho__conteudo">Dias</th>
+    </thead>
+    <tbody *ngIf="!!transferencias; else listaVazia">
+
+      <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
+
+        <td class="tabela__conteudo">{{ transferencia.ano }}</td>
+
+        <td class="tabela__conteudo">{{ transferencia.dias }}</td>
+
+        <div class="botao-wrapper" >
+          <button class="botao" (click)="edicao(transferencia.id)" type="submit">Editar</button>
+
+        </div>
+
+        <div>
+          <button class="botao" (click)="apaga(transferencia.id)" type="submit">Apagar</button>
+        </div>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Tabela do tempo Averbado -->
+  <h2 class="titulo">Averbado</h2>
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+
+      <th class="tabela__cabecalho__conteudo">Dias</th>
+    </thead>
+    <tbody *ngIf="!!transferencias; else listaVazia">
+
+      <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
+
+        <td class="tabela__conteudo">{{ transferencia.diasAverbado }}</td>
+
+        <!-- Botão editar e apagar -->
+        <div>
+          <button class="botao" type="submit">Editar</button>
+        </div>
+
+        <div>
+          <button class="botao" (click)="apaga(transferencia.id)" type="submit">Apagar</button>
+        </div>
+
+       </tr>
+
+     </tbody>
+  </table>
+
+  <!-- Tabela da Licença Prêmio -->
+
+  <!-- Tabela do tempo Averbado -->
+  <h2 class="titulo">Licença Prêmio</h2>
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+      <th class="tabela__cabecalho__conteudo">Licença Prêmio</th>
+
+    </thead>
+    <tbody *ngIf="!!transferencias; else listaVazia">
+
+      <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
+
+         <td class="tabela__conteudo">{{ transferencia.diasLicencaPremio }}</td>
+
+         <div class="botao-wrapper" >
+          <button class="botao" (click)="edicao(transferencia.id)" type="submit">Editar</button>
+        </div>
+
+        <div>
+          <button class="botao" (click)="apaga(transferencia.id)" type="submit">Apagar</button>
+        </div>
+
+       </tr>
+
+     </tbody>
+  </table>
+
+  <ng-template #listaVazia>
+    <p>Nenhuma transferência cadastrada</p>
+  </ng-template>
+</section>
+

@@ -26,7 +26,9 @@ export class TransferenciaService {
     return this.httpClient.get<Transferencia[]>(this.url);
   }
 
-  // editar delete
+  salvar(transferencia: Transferencia){
+    return this.httpClient.put<Transferencia>(this.url, transferencia);
+  }
 
 }
 

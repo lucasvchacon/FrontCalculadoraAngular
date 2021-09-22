@@ -14,16 +14,19 @@ export class ExtratoComponent implements OnInit {
   ngOnInit(): void {
     this.service.todas().subscribe((x) => (this.transferencias = x));
   }
-  apaga(idTransferencia){
-    this.transferencias.splice(idTransferencia);
+  apaga(index) {
+    this.transferencias.splice(index, 1);
   }
-  edicao(idTransferencia){
-    this.transferencias.forEach(t => {
-      if (t.id === idTransferencia){
+  edicao(idTransferencia) {
+    this.transferencias.forEach((t) => {
+      if (t.id === idTransferencia) {
         t.estado = 'escrita';
       }
-    })
+    });
+  }
+  salvar() {
+    this.transferencias.forEach((t) => {
+      this.service.salvar(t).subscribe((x) => console.log(x));
+    });
   }
 }
-
-

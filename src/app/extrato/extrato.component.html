@@ -7,25 +7,44 @@
     <thead class="tabela__cabecalho">
       <th class="tabela__cabecalho__conteudo">Ano</th>
       <th class="tabela__cabecalho__conteudo">Dias</th>
+
     </thead>
     <tbody *ngIf="!!transferencias; else listaVazia">
 
-      <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
+      <tr class="tabela__linha" *ngFor="let transferencia of transferencias; let i = index">
 
+        <td class="tabela__conteudo">
+          <ng-container *ngIf="transferencia.estado == 'leitura' ; else imputEdicao">
+            <!-- {{ transferencia.ano }} -->
         <td class="tabela__conteudo">{{ transferencia.ano }}</td>
-
         <td class="tabela__conteudo">{{ transferencia.dias }}</td>
 
-        <div class="botao-wrapper" >
+        </ng-container>
+
+
+        <ng-template #imputEdicao>
+          <input class="form-fiel__imput" id="ano" type="number" [(ngModel)]="transferencia.ano" name="ano" />
+          <input class="form-fiel__imput" id="dias" type="number" [(ngModel)]="transferencia.dias" name="dias" />
+        </ng-template>
+
+
+        </td>
+
+        <!-- <td class="tabela__conteudo">{{ transferencia.dias }}</td> -->
+
+        <th>
           <button class="botao" (click)="edicao(transferencia.id)" type="submit">Editar</button>
+        </th>
 
-        </div>
-
-        <div>
-          <button class="botao" (click)="apaga(transferencia.id)" type="submit">Apagar</button>
-        </div>
+        <th>
+          <button class="botao" (click)="apaga(i)" type="submit">Apagar</button>
+        </th>
 
       </tr>
+
+      <div>
+        <button class="botao" (click)="salvar()" type="submit">Salvar tudo</button>
+      </div>
 
     </tbody>
   </table>
@@ -44,17 +63,17 @@
         <td class="tabela__conteudo">{{ transferencia.diasAverbado }}</td>
 
         <!-- Botão editar e apagar -->
-        <div>
+        <th>
           <button class="botao" type="submit">Editar</button>
-        </div>
+        </th>
 
-        <div>
+        <th>
           <button class="botao" (click)="apaga(transferencia.id)" type="submit">Apagar</button>
-        </div>
+        </th>
 
-       </tr>
+      </tr>
 
-     </tbody>
+    </tbody>
   </table>
 
   <!-- Tabela da Licença Prêmio -->
@@ -70,23 +89,22 @@
 
       <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
 
-         <td class="tabela__conteudo">{{ transferencia.diasLicencaPremio }}</td>
+        <td class="tabela__conteudo">{{ transferencia.diasLicencaPremio }}</td>
 
-         <div class="botao-wrapper" >
+        <th>
           <button class="botao" (click)="edicao(transferencia.id)" type="submit">Editar</button>
-        </div>
+        </th>
 
-        <div>
+        <th>
           <button class="botao" (click)="apaga(transferencia.id)" type="submit">Apagar</button>
-        </div>
+        </th>
 
-       </tr>
+      </tr>
 
-     </tbody>
+    </tbody>
   </table>
 
   <ng-template #listaVazia>
     <p>Nenhuma transferência cadastrada</p>
   </ng-template>
 </section>
-

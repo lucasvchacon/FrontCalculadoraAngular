@@ -13,6 +13,26 @@
       "dias": 360,
       "estado": "leitura",
       "id": 2
+    },
+    {
+      "ano": 2006,
+      "dias": 366,
+      "estado": "leitura",
+      "id": 3
+    },
+    {
+      "ano": 2010,
+      "dias": 366,
+      "diasAverbado": 300,
+      "diasLicencaPremio": 250,
+      "estado": "leitura",
+      "id": 4
+    },
+    {
+      "ano": 20012,
+      "dias": 265,
+      "estado": "leitura",
+      "id": 5
     }
   ]
 }
